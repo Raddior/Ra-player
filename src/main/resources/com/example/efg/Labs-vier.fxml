@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" styleClass="main" stylesheets="@../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.efg.LabsController">
+   <top>
+      <Label text="Menu" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="38.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <Pane prefHeight="20.0" prefWidth="600.0" styleClass="Mpane" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <Pane prefHeight="337.0" prefWidth="381.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="res" layoutX="300.0" layoutY="293.0" mnemonicParsing="false" onAction="#getres" prefHeight="30.0" prefWidth="100.0" text="Результати" />
+            <CheckBox fx:id="check1" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" textFill="WHITE" />
+            <ChoiceBox fx:id="choise" layoutX="300.0" layoutY="14.0" prefHeight="25.0" prefWidth="170.0" />
+            <ComboBox fx:id="combo" layoutX="523.0" layoutY="14.0" prefWidth="150.0" />
+            <RadioButton fx:id="radio1" layoutX="156.0" layoutY="12.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="RadioButton" />
+            <RadioButton fx:id="radio2" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="RadioButton" />
+            <RadioButton fx:id="radio3" layoutX="156.0" layoutY="75.0" maxHeight="30.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="RadioButton" />
+            <RadioButton fx:id="radio4" layoutX="156.0" layoutY="112.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="RadioButton" />
+            <CheckBox fx:id="check2" layoutX="14.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="CheckBox" />
+            <CheckBox fx:id="check3" layoutX="14.0" layoutY="75.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="CheckBox" />
+            <CheckBox fx:id="check4" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="WL2" text="CheckBox" />
+            <Label layoutX="173.0" layoutY="145.0" prefHeight="82.0" prefWidth="67.0" styleClass="WL2" text="1 + 4 = 5    2 + 5 = 12    3 + 6 = 21  8 + 11 = ?" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
+            <Label layoutX="300.0" layoutY="78.0" prefHeight="54.0" prefWidth="164.0" styleClass="WL2" text="На двох руках десять пальців. Скільки пальців на 10 руках?" textAlignment="JUSTIFY" wrapText="true" />
+            <Label layoutX="524.0" layoutY="71.0" prefHeight="68.0" prefWidth="159.0" styleClass="WL2" text="В Олиної мами п'ять дочок: Віка, Аня, Валентина, Кіра...   Як звати п'яту?" wrapText="true" />
+            <Label layoutX="10.0" layoutY="169.0" styleClass="WL2" text="Виберіть вірні" textFill="WHITE" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

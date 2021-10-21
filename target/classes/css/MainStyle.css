@@ -1,0 +1,93 @@
+.main {
+    -fx-background-color: #313131;
+}
+
+.rpl{
+    -fx-background-color: #252525;
+}
+
+.Rpane{
+    -fx-background-color: #d4254b;
+}
+
+.Mpane, .plane{
+    -fx-background-color: #A6344D;
+}
+
+
+
+
+.controlPane:hover , .toggleControlPane:hover{
+    -fx-opacity: 0.5;
+}
+
+.controlPane:pressed , .toggleControlPane:pressed{
+    -fx-opacity: 0.25;
+}
+
+
+
+.WL1{
+    -fx-text-fill: #e0e0e0;
+}
+
+.WL2{
+    -fx-text-fill: #d8d8d8;
+}
+
+.BL1{
+    -fx-text-fill: #252525;
+}
+
+
+.svg:active{
+
+-fx-fill: #F0D0D7;
+
+}
+.svg{
+
+-fx-fill: #252525;
+
+}
+
+.list-view{
+
+    -fx-background-color: #252525;
+    -fx-effect: null;
+    -fx-border-width:0;
+
+}
+
+.list-view .list-cell:selected{
+    -fx-background-color: #d8d8d8;
+    -fx-effect: null;
+    -fx-text-fill: #252525;
+    -fx-border-width:0;
+}
+
+.list-cell {
+    -fx-control-inner-background: #252525 ;
+    -fx-border-width:0;
+}
+
+.buttons{
+
+-fx-background-color: #d4254b;
+-fx-border-radius: 0;
+-fx-border-width: 0;
+-fx-background-radius: 0;
+
+}
+
+.buttons:hover {
+    -fx-background-color: #DA0037;
+}
+
+
+.buttons:pressed {
+    -fx-background-color: #A6344D;
+}
+
+
+
