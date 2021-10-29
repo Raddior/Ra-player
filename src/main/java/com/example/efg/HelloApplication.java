@@ -12,7 +12,6 @@ import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 
 public class HelloApplication extends Application {
@@ -21,7 +20,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 400);
+        Scene scene = new Scene(fxmlLoader.load(), 750, 450);
 
         scene.getStylesheets().clear();
         File file = new File("./src/main/resources/css/MainStyle.css");
@@ -53,6 +52,7 @@ public class HelloApplication extends Application {
 
 
     }
+
 
     public static void main(String[] args) {
         launch();

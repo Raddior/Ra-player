@@ -51,6 +51,7 @@ public class HelloController implements Initializable {
 
     @FXML
     private Button openpl;
+
     @FXML
     private Label timePassed;
 
@@ -112,7 +113,7 @@ public class HelloController implements Initializable {
     private static boolean israndomActive = false;
 
     private Image artwork;
-    private  String musicDirectory;
+    private String musicDirectory;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -123,6 +124,9 @@ public class HelloController implements Initializable {
         nowPlayingArtwork.setImage(artwork);
 
         controlBox.getChildren().remove(pauseButton);
+
+        timeSlider.setDisable(true);
+        volumeSlider.setDisable(true);
 
         timeRemaining.setText("0:00");
         timePassed.setText("0:00");
@@ -165,15 +169,17 @@ public class HelloController implements Initializable {
 
 
         mod.widthProperty().addListener((obs, oldVal, newVal) -> {
+
             mediavier.setFitWidth(mod.getWidth());
             nowPlayingArtwork.setFitWidth(mod.getWidth());
-           nowPlayingArtwork.setX(mod.getWidth()/4 - 85);
+            nowPlayingArtwork.setX(mod.getWidth()/4 - 85);
+
         });
 
         mod.heightProperty().addListener((obs, oldVal, newVal) -> {
             mediavier.setFitHeight(mod.getHeight());
-            nowPlayingArtwork.setFitHeight(mod.getHeight());
-
+            nowPlayingArtwork.setFitHeight( mod.getHeight() );
+          
         });
 
     }
@@ -207,6 +213,8 @@ public class HelloController implements Initializable {
             Window Mwindow = volumeSlider.getScene().getWindow();
             musicDirectory = directoryChooser.showDialog(Mwindow).getPath();
 
+            timeSlider.setDisable(false);
+            volumeSlider.setDisable(false);
 //// норм вивід
             File[] files = new File(musicDirectory).listFiles();
             songs = new ArrayList<File>();
@@ -214,7 +222,8 @@ public class HelloController implements Initializable {
             for (File file : files) {
                 if (file.isFile() && isSupportedFileType(file.getName())) {
                     songs.add(file);
-                    PlayList.getItems().addAll(file.getName());
+                    int i = file.getName().lastIndexOf('.');
+                    PlayList.getItems().addAll(file.getName().substring(0, i));
                 }
             }
 /////
@@ -340,7 +349,6 @@ public class HelloController implements Initializable {
     public void nextMedia() {
         if (mediaPlayer == null || songs.isEmpty()) return;
 
-
         if (israndomActive ) {
 
             Random rand = new Random();
@@ -376,7 +384,6 @@ public class HelloController implements Initializable {
 
         try {
             mediavier.setMediaPlayer(mediaPlayer);
-
         }catch (Exception ex) {
             File file = new File("./src/main/resources/img/12.png");
             String file_s = file.toURI().toString();
@@ -457,7 +464,8 @@ public class HelloController implements Initializable {
         media = new Media(songs.get(songNumber).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
 
-        nowPlayingTitle.setText(songs.get(songNumber).getName());
+        int i = songs.get(songNumber).getName().lastIndexOf('.');
+        nowPlayingTitle.setText(songs.get(songNumber).getName().substring(0,i));
 
         playMedia();
         ImgOrVid();
@@ -527,7 +535,7 @@ public class HelloController implements Initializable {
 
                     cancelTimer();
                     Platform.runLater(new Runnable() {public void run() {
-
+                        if (songs.isEmpty() || songs.size() <= 1) pauseMedia();
                         if (isLoopActive  ) { mediainstal(); }else nextMedia();
 
                     }});
@@ -540,10 +548,8 @@ public class HelloController implements Initializable {
 
 
     public void cancelTimer() {
-
         running = false;
         timer.cancel();
-
     }
 
 

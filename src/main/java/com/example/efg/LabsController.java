@@ -1,9 +1,15 @@
 package com.example.efg;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -41,6 +47,14 @@ public class LabsController implements Initializable {
     @FXML
     private ChoiceBox<String> choise;
 
+    @FXML
+    private Button next;
+
+    Stage bStage;
+
+    public void setBStage(Stage stage){
+        this.bStage = stage;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,7 +89,29 @@ public class LabsController implements Initializable {
         choise.getItems().addAll("10", "20","50", "100");
 
 
+        next.setOnAction(event -> {
 
+
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource("La.fxml"));
+
+            BorderPane myPane = null;
+            try {
+                myPane = (BorderPane)myLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            LaController controller = (LaController) myLoader.getController();
+
+            Stage tstage = (Stage) radio4.getScene().getWindow();
+            controller.setPrevStage(tstage);
+
+            Scene myScene = new Scene(myPane);
+            tstage.setScene(myScene);
+            tstage.show();
+
+
+        });
     }
 
 
@@ -88,7 +124,6 @@ public class LabsController implements Initializable {
         if(check3.isSelected()) Selected += 5;
         if(check4.isSelected()) Selected += 7;
 
-        System.out.println(Selected);
         if( combo.getValue() == "Оля" && Selected == 4 && radio1.isSelected() && choise.getValue() == "50"){
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -111,5 +146,8 @@ public class LabsController implements Initializable {
 
 
     }
+
+
+
 
 }

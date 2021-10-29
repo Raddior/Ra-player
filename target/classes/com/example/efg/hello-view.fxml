@@ -112,26 +112,26 @@
          <top>
             <AnchorPane maxWidth="1000.0" prefHeight="99.0" prefWidth="500.0" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <Label fx:id="nowPlayingTitle" layoutX="30.0" layoutY="25.0" maxWidth="240.0" prefHeight="50.0" prefWidth="181.0" styleClass="WL1" text="Project ℤerø" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="25.0">
+                  <Label fx:id="nowPlayingTitle" layoutX="30.0" layoutY="25.0" maxWidth="260.0" prefHeight="50.0" prefWidth="260.0" styleClass="WL1" text="Project ℤerø" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="25.0">
                      <font>
                         <Font name="Arial Bold" size="31.0" />
                      </font>
                   </Label>
-                  <Separator halignment="LEFT" layoutX="25.0" layoutY="68.0" maxWidth="250.0" prefWidth="200.0" styleClass="rpl" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="275.0" />
+                  <Separator halignment="LEFT" layoutX="25.0" layoutY="77.0" maxWidth="460.0" prefHeight="0.0" prefWidth="420.0" styleClass="rpl" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
                </children>
             </AnchorPane>
          </top>
          <center>
             <AnchorPane prefHeight="221.0" prefWidth="221.0" BorderPane.alignment="TOP_RIGHT">
                <children>
-                  <Pane fx:id="mod" layoutX="150.0" layoutY="11.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="11.0">
+                  <Pane fx:id="mod" layoutX="100.0" layoutY="11.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="11.0">
                      <children>
-                        <ImageView fx:id="nowPlayingArtwork" fitHeight="200.0" fitWidth="200.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="nowPlayingArtwork" fitHeight="200.0" fitWidth="200.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true">
                            <viewport>
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <MediaView fx:id="mediavier" fitHeight="200.0" fitWidth="280.0" nodeOrientation="INHERIT">
+                        <MediaView fx:id="mediavier" fitHeight="200.0" fitWidth="300.0" nodeOrientation="INHERIT">
                            <viewport>
                               <Rectangle2D />
                            </viewport>

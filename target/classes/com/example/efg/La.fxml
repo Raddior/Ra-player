@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" styleClass="main" stylesheets="@../../../css/MainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.efg.LaController">
+   <top>
+      <Label text="Menu" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="38.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <Pane fx:id="pane" prefHeight="20.0" prefWidth="600.0" styleClass="Mpane" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <Pane prefHeight="337.0" prefWidth="381.0" BorderPane.alignment="CENTER">
+         <children>
+            <DatePicker fx:id="datap" layoutX="37.0" layoutY="36.0" prefHeight="25.0" prefWidth="170.0" />
+            <ColorPicker fx:id="color" layoutX="37.0" layoutY="90.0" prefHeight="25.0" prefWidth="170.0" />
+            <Label fx:id="labeldata" layoutX="250.0" layoutY="40.0" prefHeight="17.0" prefWidth="310.0" text="Виберіть дату" textFill="WHITE" />
+            <Button fx:id="back" layoutX="37.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Назад" />
+            <Label layoutX="250.0" layoutY="94.0" prefHeight="17.0" prefWidth="290.0" text="Виберіть колір" textFill="WHITE" />
+         </children></Pane>
+   </center>
+</BorderPane>
