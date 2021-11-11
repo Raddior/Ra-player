@@ -11,6 +11,7 @@ import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -30,8 +31,6 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.Tag;
 
-
-import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -100,7 +99,7 @@ public class HelloController implements Initializable {
 
     private Media media;
     private MediaPlayer mediaPlayer;
-    private ArrayList<File> songs;
+    private ArrayList<File> songs = new ArrayList<File>();
     private int songNumber;
 
     private Timer timer;
@@ -140,7 +139,10 @@ public class HelloController implements Initializable {
                 mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
 
             }
+
         });
+
+
 
         open_labs.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader();
@@ -168,24 +170,35 @@ public class HelloController implements Initializable {
         });
 
 
-        mod.widthProperty().addListener((obs, oldVal, newVal) -> {
+        InvalidationListener resizePlayer = observable -> resize();
+        mod.heightProperty().addListener(resizePlayer);
+        mod.widthProperty().addListener(resizePlayer);
 
-            mediavier.setFitWidth(mod.getWidth());
-            nowPlayingArtwork.setFitWidth(mod.getWidth());
-            nowPlayingArtwork.setX(mod.getWidth()/4 - 85);
 
-        });
-
-        mod.heightProperty().addListener((obs, oldVal, newVal) -> {
-            mediavier.setFitHeight(mod.getHeight());
-            nowPlayingArtwork.setFitHeight( mod.getHeight() );
-          
-        });
 
     }
 
 
+    public void resize(){
 
+
+            nowPlayingArtwork.setFitWidth(mod.getWidth());
+            nowPlayingArtwork.setFitHeight(mod.getHeight());
+
+            Bounds actualIMGSize = nowPlayingArtwork.getLayoutBounds();
+            nowPlayingArtwork.setX((mod.getWidth() - actualIMGSize.getWidth()) / 2 -45);
+            nowPlayingArtwork.setY((mod.getHeight() - actualIMGSize.getHeight()) / 2 );
+
+
+
+            mediavier.setFitWidth(mod.getWidth());
+            mediavier.setFitHeight(mod.getHeight());
+            Bounds actualVideoSize = mediavier.getLayoutBounds();
+            mediavier.setX((mod.getWidth() - actualVideoSize.getWidth()) / 2);
+            mediavier.setY((mod.getHeight() - actualVideoSize.getHeight()) / 2);
+
+
+    }
     @FXML
     protected  void toggleLoop() {
         isLoopActive = !isLoopActive;
@@ -217,7 +230,7 @@ public class HelloController implements Initializable {
             volumeSlider.setDisable(false);
 //// норм вивід
             File[] files = new File(musicDirectory).listFiles();
-            songs = new ArrayList<File>();
+
 
             for (File file : files) {
                 if (file.isFile() && isSupportedFileType(file.getName())) {
@@ -263,7 +276,7 @@ public class HelloController implements Initializable {
             extension = fileName.substring(i+1).toLowerCase();
         }
         switch (extension) {
-            // MP3
+                // MP3
             case "mp3":
                 // MP4
             case "mp4":
@@ -292,9 +305,23 @@ public class HelloController implements Initializable {
         if (songs == null) return;
         PlayList.getItems().clear();
         songs.clear();
+        songNumber = 0;
 
-     //   mediavier.setMediaPlayer(null);
-     //   nowPlayingArtwork.setImage(null);
+        pauseMedia();
+
+        mediavier.setMediaPlayer(null);
+        nowPlayingArtwork.setImage(null);
+
+        timeSlider.setDisable(true);
+        timeSlider.setValue(0);
+        volumeSlider.setDisable(true);
+
+        timeRemaining.setText("0:00");
+        timePassed.setText("0:00");
+        nowPlayingTitle.setText("Project ℤerø");
+
+        mediaPlayer = null;
+
     }
 
 
@@ -308,9 +335,11 @@ public class HelloController implements Initializable {
             controlBox.getChildren().add(4, pauseButton);
         }
 
+      
         beginTimer();
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
         mediaPlayer.play();
+
     }
 
 
@@ -383,6 +412,7 @@ public class HelloController implements Initializable {
     protected void imagetovideo() {
 
         try {
+
             mediavier.setMediaPlayer(mediaPlayer);
         }catch (Exception ex) {
             File file = new File("./src/main/resources/img/12.png");
@@ -397,12 +427,9 @@ public class HelloController implements Initializable {
     protected void updateimage() {
 
         try {
-            mediavier.setMediaPlayer(null);
-            nowPlayingArtwork.setImage(null);
-
 
             String location = songs.get(songNumber).toURI().getPath();
-            System.out.println(location);
+
             AudioFile audioFile = AudioFileIO.read(new File(location));
             Tag tag = audioFile.getTag();
             byte[] bytes = tag.getFirstArtwork().getBinaryData();
@@ -467,11 +494,23 @@ public class HelloController implements Initializable {
         int i = songs.get(songNumber).getName().lastIndexOf('.');
         nowPlayingTitle.setText(songs.get(songNumber).getName().substring(0,i));
 
-        playMedia();
+        mediavier.setVisible(false);
+        nowPlayingArtwork.setVisible(false);
+
         ImgOrVid();
+        playMedia();
 
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
 
+                resize();
 
+                mediavier.setVisible(true);
+                nowPlayingArtwork.setVisible(true);
+
+            }
+        });
 
         timeSlider.valueProperty().addListener(new InvalidationListener() {
             public void invalidated(Observable ov) {
@@ -554,6 +593,7 @@ public class HelloController implements Initializable {
 
 
     protected void updateValues() {
+
         duration = mediaPlayer.getMedia().getDuration();
         if ( timeSlider != null && duration != null) {
             Platform.runLater(new Runnable() {

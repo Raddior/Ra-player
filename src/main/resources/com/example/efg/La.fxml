@@ -24,6 +24,7 @@
             <Label fx:id="labeldata" layoutX="250.0" layoutY="40.0" prefHeight="17.0" prefWidth="310.0" text="Виберіть дату" textFill="WHITE" />
             <Button fx:id="back" layoutX="37.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Назад" />
             <Label layoutX="250.0" layoutY="94.0" prefHeight="17.0" prefWidth="290.0" text="Виберіть колір" textFill="WHITE" />
+            <Button fx:id="next" layoutX="612.0" layoutY="296.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Далі" />
          </children></Pane>
    </center>
 </BorderPane>

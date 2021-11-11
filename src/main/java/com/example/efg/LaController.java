@@ -36,6 +36,8 @@ public class LaController implements Initializable {
     @FXML
     private Button back;
 
+    @FXML
+    private Button next;
 
 
     Stage prevStage;
@@ -92,7 +94,34 @@ public class LaController implements Initializable {
             LabsController controller = (LabsController) myLoader.getController();
 
             Stage tstage = (Stage) color.getScene().getWindow();
-            controller.setBStage(tstage);
+            controller.setPrevStage(tstage);
+
+            Scene myScene = new Scene(myPane);
+            tstage.setScene(myScene);
+            tstage.show();
+
+
+        });
+
+
+
+
+        next.setOnAction(event -> {
+
+
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource("La2.fxml"));
+
+            BorderPane myPane = null;
+            try {
+                myPane = (BorderPane)myLoader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            La2Controller controller = (La2Controller) myLoader.getController();
+
+            Stage tstage = (Stage) color.getScene().getWindow();
+            controller.setPrevStage(tstage);
 
             Scene myScene = new Scene(myPane);
             tstage.setScene(myScene);

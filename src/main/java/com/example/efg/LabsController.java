@@ -1,6 +1,6 @@
 package com.example.efg;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,10 +50,10 @@ public class LabsController implements Initializable {
     @FXML
     private Button next;
 
-    Stage bStage;
+    Stage prevStage;
 
-    public void setBStage(Stage stage){
-        this.bStage = stage;
+    public void setPrevStage(Stage stage){
+        this.prevStage = stage;
     }
 
     @Override
