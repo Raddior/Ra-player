@@ -165,7 +165,7 @@
                   <ScrollPane fx:id="scrp" layoutX="10.0" layoutY="26.0" prefHeight="215.0" prefWidth="152.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
                   <Button fx:id="openpl" layoutX="67.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#onk" prefHeight="25.0" prefWidth="90.0" styleClass="buttons" text="Add" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="1.0" />
                   <Button fx:id="closepl" layoutX="100.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#deleteList" prefHeight="25.0" prefWidth="90.0" styleClass="buttons" text="Dell" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="1.0" />
-                  <ListView fx:id="PlayList" maxWidth="195.0" prefHeight="175.0" prefWidth="195.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+                  <ListView fx:id="PlayList" maxWidth="195.0" prefHeight="175.0" prefWidth="195.0" stylesheets="@../../../css/playlist.css" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
                   <Separator layoutX="-10.0" layoutY="25.0" prefWidth="200.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="30.0" />
                </children>
             </AnchorPane>

@@ -335,7 +335,6 @@ public class HelloController implements Initializable {
             controlBox.getChildren().add(4, pauseButton);
         }
 
-      
         beginTimer();
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
         mediaPlayer.play();
@@ -499,6 +498,8 @@ public class HelloController implements Initializable {
 
         ImgOrVid();
         playMedia();
+        PlayList.getSelectionModel().select(songNumber);
+
 
         mediaPlayer.setOnReady(new Runnable() {
             @Override
