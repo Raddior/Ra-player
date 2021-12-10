@@ -31,6 +31,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.Tag;
 
+import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -117,9 +118,7 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        File file = new File("./src/main/resources/img/121.png");
-        String file_s = file.toURI().toString();
-        artwork =new Image(file_s);
+        artwork = new Image(getClass().getResourceAsStream("/img/icon.png"));
         nowPlayingArtwork.setImage(artwork);
 
         controlBox.getChildren().remove(pauseButton);
@@ -414,9 +413,8 @@ public class HelloController implements Initializable {
 
             mediavier.setMediaPlayer(mediaPlayer);
         }catch (Exception ex) {
-            File file = new File("./src/main/resources/img/12.png");
-            String file_s = file.toURI().toString();
-            artwork =new Image(file_s);
+
+            artwork = new Image(getClass().getResourceAsStream("/img/12.png"));
             nowPlayingArtwork.setImage(artwork);
         }
 
@@ -438,16 +436,13 @@ public class HelloController implements Initializable {
 
             if (artwork.isError()) {
 
-                File file = new File("./src/main/resources/img/12.png");
-                String file_s = file.toURI().toString();
-                artwork =new Image(file_s);
+                artwork = new Image(getClass().getResourceAsStream("/img/12.png"));
                 nowPlayingArtwork.setImage(artwork);
             }
 
         } catch (Exception ex) {
-            File file = new File("./src/main/resources/img/12.png");
-            String file_s = file.toURI().toString();
-            artwork =new Image(file_s);
+
+            artwork = new Image(getClass().getResourceAsStream("/img/12.png"));
             nowPlayingArtwork.setImage(artwork);
         }
 
@@ -472,9 +467,8 @@ public class HelloController implements Initializable {
             updateimage();
 
         }else {
-            File file = new File("./src/main/resources/img/12.png");
-            String file_s = file.toURI().toString();
-            artwork =new Image(file_s);
+
+            artwork = new Image(getClass().getResourceAsStream("/img/12.png"));
             nowPlayingArtwork.setImage(artwork);
         }
 

@@ -23,13 +23,11 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 750, 450);
 
         scene.getStylesheets().clear();
-        File file = new File("./src/main/resources/css/MainStyle.css");
-        String file_s = file.toURI().toString();
-        scene.getStylesheets().add(file_s);
+        scene.getStylesheets().add(getClass().getResource("/css/MainStyle.css").getFile());
 
 
         stage.setTitle("Ra` player");
-        stage.getIcons().add(new Image(new File("./src/main/resources/img/icon.png").toURI().toString()));
+        stage.getIcons().add( new Image(getClass().getResourceAsStream("/img/icon.png")));
 
         stage.setMinHeight(450);
         stage.setMinWidth(750);
